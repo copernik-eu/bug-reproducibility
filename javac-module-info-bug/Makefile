@@ -8,6 +8,5 @@ lib/log4j-api.jar:
 	curl 'https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.21.1/log4j-api-2.21.1.jar' -o lib/log4j-api.jar
 
 clean:
-	rm -r lib target
-
+	rm -rf lib target
 
