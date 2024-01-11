@@ -14,7 +14,13 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.22.1</version>
+            <version>3.0.0-beta1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>3.0.0-beta1</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jdt.ui</groupId>
@@ -34,7 +40,7 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.12.0</version>
                     <configuration>
-                        <release>9</release>
+                        <release>17</release>
                     </configuration>
                 </plugin>
             </plugins>
@@ -81,7 +87,7 @@
                                     <mainClass>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</mainClass>
                                 </manifest>
                                 <manifestEntries>
-                                    <Rsrc-Class-Path>./ log4j-api.jar</Rsrc-Class-Path>
+                                    <Rsrc-Class-Path>./ log4j-api.jar log4j-core.jar log4j-plugins.jar</Rsrc-Class-Path>
                                     <Rsrc-Main-Class>eu.copernik.eclipse.Main</Rsrc-Main-Class>
                                     <Multi-Release>true</Multi-Release>
                                 </manifestEntries>
