@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<project basedir="." default="package">
+	<property name="srcDir" location="${basedir}/src/main/java" />
+	<property name="resourceDir" location="${basedir}/src/main/resources" />
+	<property name="outputDir" location="${basedir}/target" />
+	<property name="classesDir" location="${outputDir}/classes" />
+	<property name="libDir" location="${basedir}/lib" />
+	<property name="APP_NAME" value="eclipse-jar-in-jar" />
+
+	<target name="clean">
+		<delete dir="${outputDir}" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${classesDir}" />
+		<javac srcdir="${srcDir}"
+		       destdir="${classesDir}"
+		       debug="true"
+		       includeantruntime="false"
+		       release="17">
+			<classpath>
+				<fileset dir="${libDir}" includes="**/*.jar" />
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="package" depends="compile">
+		<jar destfile="${outputDir}/${APP_NAME}.jar">
+			<manifest>
+				<attribute name="Main-Class"
+				           value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class"
+				           value="eu.copernik.eclipse.Main" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path"
+				           value="./ lib/log4j/log4j-api-3.0.0-beta1.jar lib/log4j/log4j-core-3.0.0-beta1.jar lib/log4j/log4j-plugins-3.0.0-beta1.jar lib/jdatepicker-1.3.4.jar" />
+			</manifest>
+			<zipfileset src="jar-in-jar-loader.zip" />
+			<zipfileset dir="${libDir}" includes="**/*.jar" prefix="lib" />
+			<zipfileset dir="${resourceDir}" />
+			<zipfileset dir="${classesDir}" />
+		</jar>
+	</target>
+</project>

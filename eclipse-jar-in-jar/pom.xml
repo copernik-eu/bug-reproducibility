@@ -28,7 +28,7 @@
             <version>1.0</version>
             <type>zip</type>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jar-in-jar-loader.zip</systemPath>
+            <systemPath>${project.basedir}/jar-in-jar-loader.zip</systemPath>
         </dependency>
     </dependencies>
 
