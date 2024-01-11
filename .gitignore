@@ -1,0 +1,9 @@
+# Target directory
+target/
+# IntelliJ IDEA files
+*.iml
+.idea/
+# Eclipse files
+.project
+.classpath
+.settings/

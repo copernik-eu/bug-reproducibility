@@ -1,5 +1,3 @@
 ##
 # The library is downloaded
 lib/
-# Target compiler directory
-target/
