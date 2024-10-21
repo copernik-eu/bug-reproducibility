@@ -19,3 +19,9 @@ both times.
 
 Due to a bug the `jar:rsrc:` URL will open the JAR file with a multi-release version of 8.
 
+## Bug reports
+
+This was reported in
+[eclipse-jdt/eclipse.jdt.ui#1057](https://github.com/eclipse-jdt/eclipse.jdt.ui/issues/1057)
+and fixed in
+[eclipse-jdt/eclipse.jdt.ui#1058](https://github.com/eclipse-jdt/eclipse.jdt.ui/pull/1058).
