@@ -1,0 +1,18 @@
+= Annotations with `CLASS` retention
+
+Annotations with a retention of `CLASS` are a good example of dependencies that are not required at runtime.
+To remove them from the runtime of consumers a library can use the `provided`
+https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#dependency-scope[Maven scope]
+or mark the dependency as
+https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html[`optional` dependencies].
+Since both these types of dependencies are not transitive, consumers of the library will end up with compiler warnings such as:
+
+----
+Cannot find annotation method 'value()' in type 'foo.Bar': class file for foo.Bar not found
+----
+
+If the
+https://docs.oracle.com/en/java/javase/17/docs/specs/man/javac.html#option-Werror[`-Werror` compiler option]
+is on, this will cause a compilation failure as reported in
+https://github.com/apache/logging-log4j2/issues/2232[`apache/logging-log4j2#2232`]
+for example.
