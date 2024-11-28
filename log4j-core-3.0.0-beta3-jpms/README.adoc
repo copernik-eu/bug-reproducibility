@@ -1,0 +1,20 @@
+This example shows how to correctly implement a custom Log4j Core appender in Log4j Core `3.0.0-beta3`.
+
+It contains the workarounds for the following bugs:
+
+https://github.com/apache/logging-log4j2/issues/3250[#3250]::
+Module `org.apache.logging.log4j.core` does not declare `uses RecyclerFactoryProvider`
+
+https://github.com/apache/logging-log4j2/issues/3251[#3251]::
+Generated `Log4jPlugins` class does not compile in a JPMS environment
+
+To test this project run:
+
+[source,shell]
+----
+../mvnw clean verify
+DEPS=$(../mvnw -q \
+  dependency:build-classpath -DincludeScope=runtime -Dmdep.outputProperty=c \
+  help:evaluate -Dexpression=c -DforceStdout)
+java -p "target/log4j-example-0.jar:$DEPS" -m eu.copernik.log4j.example
+----
